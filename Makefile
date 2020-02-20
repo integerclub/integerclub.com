@@ -1,5 +1,5 @@
 NAME = integerclub
-FQDN = $(NAME).org
+FQDN = $(NAME).com
 MAIL = integerclub@outlook.com
 
 help:
