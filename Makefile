@@ -100,3 +100,53 @@ checkroot:
 clean:
 	find . -name "__pycache__" -exec rm -r {} +
 	find . -name "*.pyc" -exec rm {} +
+
+
+# GitHub Pages Mirror
+
+TMP_REV = /tmp/rev.txt
+CAT_REV = cat $(TMP_REV)
+GIT_SRC = https://github.com/integerclub/integerclub.com
+GIT_DST = https://github.com/integerclub/integerclub.github.io
+WEB_URL = https://integerclub.github.io/
+TMP_GIT = /tmp/tmpgit
+README  = $(TMP_GIT)/README.md
+
+ghmirror: site
+	#
+	# Create mirror.
+	rm -rf $(TMP_GIT)
+	mv _site $(TMP_GIT)
+	git rev-parse --short HEAD > $(TMP_REV)
+	echo Mirror of IntegerClub.com >> $(README)
+	echo ========================= >> $(README)
+	echo >> $(README)
+	echo Generated from [integerclub/integerclub.com][GIT_SRC] >> $(README)
+	echo "([$$($(CAT_REV))][GIT_REV])". >> $(README)
+	echo >> $(README)
+	echo Visit $(WEB_URL) to view the the mirror. >> $(README)
+	echo >> $(README)
+	echo [GIT_SRC]: $(GIT_SRC) >> $(README)
+	echo [WEB_URL]: $(WEB_URL) >> $(README)
+	echo [GIT_REV]: $(GIT_SRC)/commit/$$($(CAT_REV)) >> $(README)
+	#
+	# Push mirror.
+	cd $(TMP_GIT) && git init
+	cd $(TMP_GIT) && git config user.name "Susam Pal"
+	cd $(TMP_GIT) && git config user.email susam@susam.in
+	cd $(TMP_GIT) && git add .
+	cd $(TMP_GIT) && git commit -m "Generated from $(GIT_SRC) - $$($(CAT_REV))"
+	cd $(TMP_GIT) && git remote add origin "$(GIT_DST).git"
+	cd $(TMP_GIT) && git log
+	cd $(TMP_GIT) && git push -f origin master
+
+# Checks
+checks:
+	# Ensure punctuation goes inside inline-math.
+	! grep -IErn '\\)[^ ]' content | grep -vE '\\)(th|-|</a>|\)|:)'
+	! grep -IErn '(th|-|</h[1-6]>|:) \\)' content
+	# Ensure all page headings are hyperlinks to themselves.
+	! grep -IErn '<h1>' content | grep -vE '<h1><a href="./">'
+	# Ensure all section headings are hyperlinks to themselves.
+	! grep -IErn '<h[2-6]>' content | grep -vE '<h[2-6] id=".*"><a|dixit:'
+	@echo Done; echo
