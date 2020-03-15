@@ -1,33 +1,65 @@
 /* Body */
 body {
-    margin: 0;
-    line-height: 1.5;
-    color: #303030;
-    font-family: helvetica, arial, sans-serif;
-
-    /* Prevent very long word from increasing the page width while the
-     * black navigation bar does not become as wide as the page width. */
-    overflow-wrap: break-word;
+  margin: 0;
+  line-height: 1.5;
+  color: #333;
+  font-family: helvetica, arial, sans-serif;
+  overflow-wrap: break-word;
 }
 
 h1, h2, h3, h4, h5, h6 {
-    margin-bottom: 0;
-    margin-top: 1em;
+  margin-bottom: 0;
+  margin-top: 1em;
 }
 
+h1 a:link, h1 a:visited,
+h2 a:link, h2 a:visited,
+h3 a:link, h3 a:visited,
+h4 a:link, h4 a:visited,
+h5 a:link, h5 a:visited,
+h6 a:link, h6 a:visited,
+.more:link, .more:visited {
+  color: #333;
+}
+
+h1 a:hover, h1 a:active,
+h2 a:hover, h2 a:active,
+h3 a:hover, h3 a:active,
+h4 a:hover, h4 a:active,
+h5 a:hover, h5 a:active,
+h6 a:hover, h6 a:active,
+.more:hover, .more:active {
+  color: #555;
+}
+
+
 a:link, a:visited {
-    color: #0000e0;
-    text-decoration: none
+  color: #03c;
+  text-decoration: none;
 }
 
 a:hover, a:active {
-    color: #0000ff;
-    text-decoration: underline
+  color: #03f;
+  text-decoration: underline;
+}
+
+pre, code, samp, kbd {
+  font-family: monospace,monospace;
+  color: #006;
 }
 
 pre {
-    background: #f0f0f0;
-    padding: 0.5em;
+  background: #eee;
+  padding: 0.5em;
+  overflow: auto;
+}
+
+blockquote {
+  border-left: medium solid;
+  margin-right: 0;
+  margin-left: 0;
+  padding: 0.5em;
+  background: #eee;
 }
 
 /* Single column layout */
@@ -38,12 +70,10 @@ nav div, main, footer > div {
     padding: 0 1em;
 }
 
-
 /* Navigation panel */
 nav {
-    background: #303030;
-    border-bottom: thin solid #101010;
-    text-transform: uppercase;
+    background: #333;
+    border-bottom: thin solid #111;
 }
 
 nav a {
@@ -60,11 +90,11 @@ nav a:last-child {
 }
 
 nav a:link, nav a:visited {
-    color: #cccccc;
+    color: #ccc;
 }
 
 nav a:hover, nav a:active {
-    color: #ffffff;
+    color: #fff;
 }
 
 nav div {
@@ -83,12 +113,12 @@ nav img:hover {
 
 /* Footer */
 footer {
-    background: #f0f0f0;
-    border-top: thin solid #e0e0e0;
+    background: #eee;
+    border-top: thin solid #ccc;
     margin-top: 1em;
     padding-top: 1.25em;
     padding-bottom: 1em;
-    box-shadow: 0 100vh 0 100vh #f0f0f0;
+    box-shadow: 0 100vh 0 100vh #eee;
 }
 
 footer div div {
@@ -112,22 +142,10 @@ article {
     margin-bottom: 1em;
 }
 
-article h2 a:link, article h2 a:visited,
-article h1 a:link, article h1 a:visited,
-.more:link, .more:visited {
-    color: #303030;
-}
-
-article h2 a:hover, article h2 a:active,
-article h1 a:hover, article h1 a:active,
-.more:hover, .more:active {
-    color: #707070;
-}
-
 .meta {
-    font-size: 0.8em;
-    color: #707070;
+    font-size: small;
     font-style: italic;
+    color: #555;
 }
 
 .summary {
@@ -150,14 +168,14 @@ div .more {
 }
 
 .rss:link, .rss:visited, .rss:hover, .rss:active {
-    color: #ffffff;
+    color: #fff;
     text-decoration: none;
 }
 
 .rss:link, .rss:visited {
-    background: #ff6600;
+    background: #f60;
 }
 
 .rss:hover, .rss:active {
-    background: #ff8822;
+    background: #f30;
 }

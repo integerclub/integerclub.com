@@ -146,7 +146,7 @@ checks:
 	! grep -IErn '\\)[^ ]' content | grep -vE '\\)(th|-|</a>|\)|:)'
 	! grep -IErn '(th|-|</h[1-6]>|:) \\)' content
 	# Ensure all page headings are hyperlinks to themselves.
-	! grep -IErn '<h1>' content | grep -vE '<h1><a href="./">'
+	! grep -IErn '<h1' content | grep -vE '<h1><a href="./">'
 	# Ensure all section headings are hyperlinks to themselves.
-	! grep -IErn '<h[2-6]>' content | grep -vE '<h[2-6] id=".*"><a|dixit:'
+	! grep -IErn '<h[2-6]' content | grep -vE '<h[2-6] id=".*"><a'
 	@echo Done; echo
