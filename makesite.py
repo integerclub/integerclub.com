@@ -230,7 +230,8 @@ def main():
 
     # Create RSS feeds.
     make_list(blog_posts, '_site/blog/rss.xml',
-              feed_xml, item_xml, blog='blog', title='Blog', **params)
+              feed_xml, item_xml, blog='blog', title='Integer Club Blog',
+              **params)
 
 
 # Test parameter to be set temporarily by unit tests.
