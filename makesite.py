@@ -65,7 +65,11 @@ def log(msg, *args):
 
 def truncate(text, words=25):
     """Remove tags and truncate text to the specified number of words."""
-    return ' '.join(re.sub('(?s)<.*?>', ' ', text).split()[:words])
+    text = re.sub(r'(?s)</h[1-6]>', ':', text)
+    text = re.sub(r'(?s)\\\(|\\\)|\\[|\\]|\\begin{.*?}|\\end{.*?}', '', text)
+    text = re.sub(r'(?s)<.*?>', '', text)
+    text = ' '.join(text.split()[:words])
+    return text
 
 
 def read_headers(text):
