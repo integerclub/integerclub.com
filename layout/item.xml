@@ -4,9 +4,7 @@
 <guid>{{ site_url }}/{{ blog }}/{{ slug }}/</guid>
 <description>
 <![CDATA[
-<p>
-{{ summary }}&nbsp;<a href="{{ site_url }}/{{ blog }}/{{ slug }}/">...</a>
-</p>
+<p>{{ summary }}&nbsp;<a href="{{ site_url }}/{{ blog }}/{{ slug }}/">...</a></p>
 <p><a href="{{ site_url }}/{{ blog }}/{{ slug }}/">Read More</a></p>
 ]]>
 </description>
