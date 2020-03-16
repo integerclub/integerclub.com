@@ -203,18 +203,24 @@ def main():
     post_layout = render(page_layout, content=post_layout)
     list_layout = render(page_layout, content=list_layout)
 
-    # Create site pages.
+    # Create home page.
+    params['root'] = ''
     make_pages('content/_index.html', '_site/index.html',
                page_layout, **params)
+
+    # Create site pages.
+    params['root'] = '../'
     make_pages('content/[!_]*.html', '_site/{{ slug }}/index.html',
                page_layout, **params)
 
     # Create blogs.
+    params['root'] = '../../'
     blog_posts = make_pages('content/blog/*.html',
                             '_site/blog/{{ slug }}/index.html',
                             post_layout, blog='blog', **params)
 
     # Create blog list pages.
+    params['root'] = '../'
     make_list(blog_posts, '_site/blog/index.html',
               list_layout, item_layout, blog='blog', title='Blog', **params)
 
